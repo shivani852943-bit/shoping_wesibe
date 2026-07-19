@@ -1,0 +1,45 @@
+<!-- File-purpose comment: Template file cart.html. Used by Flask to render this page. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Your Cart | ShopZone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{background:#f7f5fa;color:#29222c}.navbar{background:#6a0572}.cart-img{width:88px;height:100px;object-fit:cover;border-radius:10px}.card{border:0;border-radius:16px}.step{display:none}.step.active{display:block}.summary{position:sticky;top:20px}.qty{min-width:32px;display:inline-block;text-align:center}.success{max-width:560px;margin:90px auto}.muted{color:#6c6570}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-dark px-4 py-3"><a class="navbar-brand fw-bold" href="/party">ShopZone Party Wear</a></nav>
+
+<main class="container py-5">
+  <section id="cartStep" class="step active">
+    <h1 class="h2 mb-4">My Cart</h1>
+    <div class="row g-4"><div class="col-lg-8"><div id="cartItems"></div><div id="emptyCart" class="card p-5 text-center d-none"><h2 class="h4">Your cart is empty</h2><p class="muted">Choose something special from our party wear collection.</p><a class="btn btn-primary" href="/party">Continue shopping</a></div></div>
+      <aside class="col-lg-4"><div id="cartSummary" class="card shadow-sm p-4 summary"><h2 class="h5">Price Details</h2><hr><div class="d-flex justify-content-between"><span>Items total</span><strong id="cartTotal">₹0</strong></div><div class="d-flex justify-content-between mt-2"><span>Delivery</span><span class="text-success">FREE</span></div><hr><button id="checkoutButton" class="btn btn-success w-100" onclick="showCheckout()">Proceed to checkout</button></div></aside>
+    </div>
+  </section>
+
+  <section id="checkoutStep" class="step"><button class="btn btn-link px-0 mb-3" onclick="showStep('cartStep')">← Back to cart</button><h1 class="h2 mb-4">Checkout</h1><div class="row g-4"><div class="col-lg-7">
+    <div class="card shadow-sm p-4 mb-3"><h2 class="h5">1. Verify mobile number</h2><div class="input-group"><input id="mobile" class="form-control" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number"><button class="btn btn-outline-primary" id="sendOtpButton" onclick="sendOTP()">Send OTP</button></div><div id="otpArea" class="mt-3 d-none"><label class="form-label">Enter 6-digit OTP</label><div class="input-group"><input id="otp" class="form-control" inputmode="numeric" maxlength="6" placeholder="OTP"><button class="btn btn-success" onclick="verifyOTP()">Verify</button></div></div><small id="otpMessage" class="d-block mt-2 muted"></small></div>
+    <div class="card shadow-sm p-4 mb-3"><h2 class="h5">2. Delivery address</h2><div class="row g-3"><div class="col-12"><input id="name" class="form-control" placeholder="Full name"></div><div class="col-md-6"><input id="addressMobile" class="form-control" readonly placeholder="Verified mobile number"></div><div class="col-md-6"><input id="pincode" class="form-control" inputmode="numeric" maxlength="6" placeholder="6-digit pincode"></div><div class="col-12"><textarea id="address" class="form-control" rows="3" placeholder="House / flat, street, area"></textarea></div><div class="col-12"><input id="city" class="form-control" placeholder="City"></div></div></div>
+    <div class="card shadow-sm p-4"><h2 class="h5">3. Payment method</h2><div class="form-check mb-2"><input class="form-check-input" type="radio" name="payment" value="cod" id="cod"><label class="form-check-label" for="cod">Cash on Delivery</label></div><div class="form-check mb-2"><input class="form-check-input" type="radio" name="payment" value="upi" id="upi"><label class="form-check-label" for="upi">UPI</label></div><div class="form-check"><input class="form-check-input" type="radio" name="payment" value="card" id="card"><label class="form-check-label" for="card">Credit / Debit Card</label></div></div>
+  </div><aside class="col-lg-5"><div class="card shadow-sm p-4 summary"><h2 class="h5">Order summary</h2><div id="checkoutItems"></div><hr><div class="d-flex justify-content-between fw-bold"><span>Total</span><span id="checkoutTotal">₹0</span></div><button class="btn btn-primary w-100 mt-4" onclick="placeOrder()">Place order</button><p id="orderMessage" class="text-danger small mt-3 mb-0"></p></div></aside></div></section>
+</main>
+<script>
+let cart=[];
+const money=n=>'₹'+Number(n).toLocaleString('en-IN');
+const escapeHtml=s=>String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+async function api(url, options={}) { const r=await fetch(url,options); const d=await r.json(); if(!r.ok) throw new Error(d.error||'Something went wrong'); return d; }
+async function loadCart(){ try {const data=await api('/api/party/cart'); cart=data.items; renderCart(data.total);} catch(e){alert(e.message)} }
+function renderCart(total){const box=document.getElementById('cartItems'),empty=document.getElementById('emptyCart'),summary=document.getElementById('cartSummary');empty.classList.toggle('d-none',cart.length>0);summary.classList.toggle('d-none',!cart.length);box.innerHTML=cart.map(i=>`<article class="card shadow-sm p-3 mb-3"><div class="d-flex align-items-center gap-3"><img class="cart-img" src="/static/images/${encodeURIComponent(i.image)}" alt="${escapeHtml(i.name)}"><div class="flex-grow-1"><h2 class="h6 mb-1">${escapeHtml(i.name)}</h2><strong class="text-success">${money(i.price)}</strong><div class="mt-2"><button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${i.product_id},${i.quantity-1})">−</button><span class="qty">${i.quantity}</span><button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${i.product_id},${i.quantity+1})">+</button></div></div><div class="text-end"><strong>${money(i.subtotal)}</strong><button class="btn btn-sm btn-link text-danger d-block mt-2" onclick="removeItem(${i.product_id})">Remove</button></div></div></article>`).join('');document.getElementById('cartTotal').textContent=money(total);document.getElementById('checkoutTotal').textContent=money(total);document.getElementById('checkoutItems').innerHTML=cart.map(i=>`<div class="d-flex justify-content-between small mb-2"><span>${escapeHtml(i.name)} × ${i.quantity}</span><span>${money(i.subtotal)}</span></div>`).join('');}
+async function changeQty(id,q){if(q<1)return removeItem(id);try{await api('/api/party/cart/'+id,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({quantity:q})});loadCart()}catch(e){alert(e.message)}}
+async function removeItem(id){try{await api('/api/party/cart/'+id,{method:'DELETE'});loadCart()}catch(e){alert(e.message)}}
+function showStep(id){document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function showCheckout(){if(!cart.length)return;showStep('checkoutStep')}
+async function sendOTP(){const mobile=document.getElementById('mobile').value.trim(),msg=document.getElementById('otpMessage');try{const d=await api('/api/auth/request-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mobile})});document.getElementById('otpArea').classList.remove('d-none');msg.textContent=d.message+(d.development_otp?' Development OTP: '+d.development_otp:'');msg.className='d-block mt-2 text-success';}catch(e){msg.textContent=e.message;msg.className='d-block mt-2 text-danger'}}
+async function verifyOTP(){const mobile=document.getElementById('mobile').value.trim(),otp=document.getElementById('otp').value.trim(),msg=document.getElementById('otpMessage');try{await api('/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mobile,otp})});document.getElementById('addressMobile').value=mobile;document.getElementById('mobile').readOnly=true;msg.textContent='Mobile number verified ✓';msg.className='d-block mt-2 text-success';}catch(e){msg.textContent=e.message;msg.className='d-block mt-2 text-danger'}}
+async function placeOrder(){const payment=document.querySelector('input[name="payment"]:checked');const payload={name:document.getElementById('name').value.trim(),mobile:document.getElementById('addressMobile').value.trim(),address:document.getElementById('address').value.trim(),city:document.getElementById('city').value.trim(),pincode:document.getElementById('pincode').value.trim(),payment_method:payment?payment.value:''};const msg=document.getElementById('orderMessage');try{const d=await api('/api/checkout/place-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});window.location.href='/order-success/'+d.order_id}catch(e){msg.textContent=e.message}}
+loadCart();
+</script>
+</body></html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!-- File-purpose comment: Template file footer.html. Used by Flask to render this page. -->
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dark Navy Footer</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<style>
+
+/* Footer */
+
+.footer{
+
+    background:#061a35;
+    color:#ffffff;
+    padding:60px 0 20px;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+
+
+.footer h5{
+
+    color:#ffffff;
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:25px;
+    text-transform:uppercase;
+    position:relative;
+
+}
+
+
+
+.footer h5::after{
+
+    content:"";
+    width:45px;
+    height:3px;
+    background:#ffb703;
+    position:absolute;
+    left:0;
+    bottom:-10px;
+
+}
+
+
+
+.footer ul{
+
+    list-style:none;
+    padding:0;
+    margin:0;
+
+}
+
+
+
+.footer ul li{
+
+    margin-bottom:12px;
+
+}
+
+
+
+.footer ul li a{
+
+    color:#c9d6e8;
+    text-decoration:none;
+    font-size:15px;
+    transition:.3s;
+
+}
+
+
+
+.footer ul li a:hover{
+
+    color:#ffb703;
+    padding-left:8px;
+
+}
+
+
+
+/* Search Box */
+
+.footer-search input{
+
+    width:100%;
+    padding:12px 15px;
+    border:none;
+    border-radius:25px;
+    outline:none;
+    background:#ffffff;
+    color:#333;
+
+}
+
+
+
+/* Contact */
+
+.contact-info p{
+
+    color:#c9d6e8;
+    font-size:15px;
+    margin-bottom:12px;
+
+}
+
+
+
+.contact-info a{
+
+    color:#c9d6e8;
+    text-decoration:none;
+
+}
+
+
+
+.contact-info a:hover{
+
+    color:#ffb703;
+
+}
+
+
+
+/* Bottom */
+
+.footer-bottom{
+
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.2);
+    text-align:center;
+    color:#b8c5d8;
+    font-size:14px;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+<footer class="footer">
+
+
+<div class="container">
+
+
+<div class="row gy-4">
+
+
+
+<!-- Online Shopping -->
+
+<div class="col-lg-3 col-md-6">
+
+<h5>
+Online Shopping
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('mens_collection') }}">Men</a></li>
+
+<li><a href="{{ url_for('womens_collection') }}">Women</a></li>
+
+<li><a href="{{ url_for('kids_fashion') }}">Kids</a></li>
+
+<li><a href="{{ url_for('women_ethenic_wear') }}">Ethnic Wear</a></li>
+
+<li><a href="{{ url_for('western_dress') }}">Western Wear</a></li>
+
+<li><a href="{{ url_for('footwear') }}">Footwear</a></li>
+
+<li><a href="{{ url_for('accessories') }}">Accessories</a></li>
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<!-- Customer Policies -->
+
+<div class="col-lg-3 col-md-6">
+
+
+<h5>
+Customer Policies
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+
+<li><a href="{{ url_for('home') }}">FAQ</a></li>
+
+<li><a href="{{ url_for('home') }}">Shipping Policy</a></li>
+
+<li><a href="{{ url_for('home') }}">Return & Exchange</a></li>
+
+<li><a href="{{ url_for('home') }}">Privacy Policy</a></li>
+
+<li><a href="{{ url_for('home') }}">Terms & Conditions</a></li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- Search -->
+
+<div class="col-lg-3 col-md-6">
+
+
+<h5>
+Search Products, Brands & More
+</h5>
+
+
+<div class="footer-search">
+
+<input type="text" placeholder="Search products & brands">
+
+</div>
+
+
+
+
+<h5 class="mt-4">
+Popular Searches
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('south_indian_wear') }}">Saree</a></li>
+
+<li><a href="{{ url_for('women_ethenic_wear') }}">Kurta Pajama</a></li>
+
+<li><a href="{{ url_for('party') }}">Lehenga</a></li>
+
+<li><a href="{{ url_for('mens_collection') }}">T-Shirts</a></li>
+
+<li><a href="{{ url_for('mens_collection') }}">Jeans</a></li>
+
+<li><a href="{{ url_for('footwear') }}">Shoes</a></li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- Useful Links -->
+
+<div class="col-lg-3 col-md-6">
+
+
+<h5>
+Useful Links
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('home') }}">About Us</a></li>
+
+<li><a href="{{ url_for('home') }}">Careers</a></li>
+
+<li><a href="{{ url_for('home') }}">Store Locator</a></li>
+
+<li><a href="{{ url_for('party') }}">Offers</a></li>
+
+<li><a href="{{ url_for('home') }}">Blog</a></li>
+
+<li><a href="{{ url_for('home') }}">Help Center</a></li>
+
+
+</ul>
+
+
+
+<h5 class="mt-4">
+Contact Us
+</h5>
+<div class="contact-info">
+<p>
+📞 
+<a href="tel:6306434625">
+6306434625
+</a>
+</p>
+<p>
+📍
+<a href="https://maps.google.com/?q=Lucknow+Near+CMS+School" target="_blank">
+Lucknow, Near CMS School
+</a>
+</p>
+<p>
+✉
+<a href="mailto:support@example.com">
+support@example.com
+</a>
+</p>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 Fashion Store | All Rights Reserved
+</div>
+</div>
+</footer>
+</body>
+</html>

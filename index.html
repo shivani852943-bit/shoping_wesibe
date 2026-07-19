@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<!-- File-purpose comment: Template file index.html. Used by Flask to render this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navbar</title>
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Css link -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<!-- Bootstrap Link -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<nav class="navbar">
+
+    <!-- Logo -->
+    <div class="logo">
+        Shivani
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search products...">
+        <button>
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <!-- Right Menu -->
+    <div class="nav-menu">
+
+        <a href="{{url_for('supplier')}}">
+            <i class="fa-solid fa-industry"></i>
+            <span>Supplier</span>
+        </a>
+
+        <a href="{{url_for('investor')}}">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Investor</span>
+        </a>
+
+       <a href="{{url_for('profile')}}">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="{{url_for('cart')}}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Cart</span>
+        </a>
+
+    </div>
+
+</nav>
+<!-- Quick login buttons: User / Admin -->
+<div style="display:flex;gap:8px;justify-content:flex-end;padding:8px 16px;">
+    <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-sm">User Login</a>
+    <a href="{{ url_for('admin') }}" class="btn btn-danger btn-sm">Admin</a>
+</div>
+<!-- Banner -->
+
+  <div class="banner">
+        <a href="https://example.com" target="_blank">
+            <img src="{{ url_for('static', filename='images/Banner1.png') }}">
+        </a>
+    </div>
+
+    
+<!-- Navbar1 -->
+<div class="navbar1">
+    <div class="menu-icon" onclick="openMenu()">☰</div>
+
+    <div class="nav-links">
+       
+        <a href="#">All</a>
+        <a href="{{url_for('mens_collection')}}">Men's Wear</a>
+        <a href="{{url_for('womens_collection')}}">Women's Wear</a>
+        <a href="{{url_for('north_indian_collection')}}">North Indian Wear</a>
+        <a href="{{url_for('party')}}">Party Wear</a>
+        <a href="{{url_for('kids_fashion')}}">Kid's Fashion</a>
+        <a href="{{url_for('accessories')}}">Accessories</a>
+        <a href="{{url_for('bags_and_wallets')}}">Bag's & Wallet's</a>
+        <a href="{{url_for('footwear')}}">Footwear</a>
+        <a href="{{url_for('gaming_mouse')}}">Gaming Mouse</a>  
+      
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="close-btn" onclick="closeMenu()">×</div>
+
+      <a href="#">All</a>
+        <a href="{{url_for('mens_collection')}}">Men's Wear</a>
+        <a href="{{url_for('womens_collection')}}">Women's Wear</a>
+        <a href="{{url_for('north_indian_collection')}}">North Indian Wear</a>
+        <a href="{{url_for('party')}}">Party Wear</a>
+        <a href="{{url_for('kids_fashion')}}">Kid's Fashion</a>
+        <a href="{{url_for('accessories')}}">Accessories</a>
+        <a href="{{url_for('bags_and_wallets')}}">Bag's & Wallet's</a>
+        <a href="{{url_for('footwear')}}">Footwear</a>
+        <a href="{{url_for('gaming_mouse')}}">Gaming Mouse</a>   
+</div>
+
+<script>
+function openMenu(){
+    document.getElementById("sidebar").style.left="0";
+}
+
+function closeMenu(){
+    document.getElementById("sidebar").style.left="-250px";
+}
+</script>
+<!-- Budget Bargaining -->
+ <h1 class="heading">BUDGET BARGAINS</h1>
+ <!-- Gallery section -->
+<div class="container">
+
+<div class="slider">
+
+<div class="slider-track">
+
+<!-- Product 1 -->
+
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/wirelessheadphone.jpg') }}">
+<div class="product-info">
+
+<h5>Wireless Headphone</h5>
+
+<span class="offer">30% OFF</span>
+
+<div>
+<span class="price">$70</span>
+<span class="old-price">$100</span>
+</div>
+
+<div class="buttons">
+
+<a href="#" onclick="buyNow(27); return false;" class="btn btn-success btn-sm">Buy Now</a>
+
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+  <img src="{{ url_for('static', filename='/images/smartwatch.jpg') }}">
+<div class="product-info">
+
+<h5>Smart Watch</h5>
+
+<span class="offer">25% OFF</span>
+
+<div>
+<span class="price">$120</span>
+<span class="old-price">$160</span>
+</div>
+
+<div class="buttons">
+
+<a href="#" onclick="buyNow(28); return false;" class="btn btn-success btn-sm">Buy Now</a>
+
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+<img src="{{ url_for('static', filename='/images/gamingmouse.jpg') }}">
+
+
+<div class="product-info">
+
+<h5>Gaming Mouse</h5>
+
+<span class="offer">40% OFF</span>
+
+<div>
+<span class="price">$45</span>
+<span class="old-price">$75</span>
+</div>
+
+<div class="buttons">
+
+<a href="#" onclick="buyNow(37); return false;" class="btn btn-success btn-sm">Buy Now</a>
+
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+<img src="{{ url_for('static', filename='/images/bluetoothspeaker.jpg') }}">
+
+<div class="product-info">
+
+<h5>Bluetooth Speaker</h5>
+
+<span class="offer">35% OFF</span>
+
+<div>
+<span class="price">$60</span>
+<span class="old-price">$95</span>
+</div>
+
+<div class="buttons">
+
+<a href="#" onclick="buyNow(30); return false;" class="btn btn-success btn-sm">Buy Now</a>
+
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Product 5 -->
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='/images/runningshoes.jpg') }}">
+
+<div class="product-info">
+
+<h5>Running Shoes</h5>
+
+<span class="offer">50% OFF</span>
+
+<div>
+<span class="price">$90</span>
+<span class="old-price">$180</span>
+</div>
+
+<div class="buttons">
+
+<a href="#" onclick="buyNow(42); return false;" class="btn btn-success btn-sm">Buy Now</a>
+
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Duplicate cards for infinite scrolling -->
+
+<div class="product-card">
+<img src="{{ url_for('static', filename='images/wirelessheadphone.jpg') }}">
+<div class="product-info">
+<h5>Wireless Headphone</h5>
+<span class="offer">30% OFF</span>
+<div>
+<span class="price">$70</span>
+<span class="old-price">$100</span>
+</div>
+<div class="buttons">
+<a href="#" onclick="buyNow(27); return false;" class="btn btn-success btn-sm">Buy Now</a>
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+</div>
+</div>
+</div>
+
+<div class="product-card">
+<img src="{{ url_for('static', filename='/images/smartwatch.jpg') }}">
+<div class="product-info">
+<h5>Smart Watch</h5>
+<span class="offer">25% OFF</span>
+<div>
+<span class="price">$120</span>
+<span class="old-price">$160</span>
+</div>
+<div class="buttons">
+<a href="#" onclick="buyNow(28); return false;" class="btn btn-success btn-sm">Buy Now</a>
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+</div>
+</div>
+</div>
+
+<div class="product-card">
+ <img src="{{ url_for('static', filename='/images/gamingmouse.jpg') }}"> 
+<div class="product-info">
+<h5>Gaming Mouse</h5>
+<span class="offer">40% OFF</span>
+<div>
+<span class="price">$45</span>
+<span class="old-price">$75</span>
+</div>
+<div class="buttons">
+<a href="#" onclick="buyNow(37); return false;" class="btn btn-success btn-sm">Buy Now</a>
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+</div>
+</div>
+</div>
+
+<div class="product-card">
+ <img src="{{ url_for('static', filename='/images/bluetoothspeaker.jpg') }}" alt="Photo">
+<div class="product-info">
+<h5>Bluetooth Speaker</h5>
+<span class="offer">35% OFF</span>
+<div>
+<span class="price">$60</span>
+<span class="old-price">$95</span>
+</div>
+<div class="buttons">
+<a href="#" onclick="buyNow(30); return false;" class="btn btn-success btn-sm">Buy Now</a>
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+</div>
+</div>
+</div>
+
+<div class="product-card">
+<img src="{{ url_for('static', filename='/images/runningshoes.jpg') }}" alt="Photo">
+<div class="product-info">
+<h5>Running Shoes</h5>
+<span class="offer">50% OFF</span>
+<div>
+<span class="price">$90</span>
+<span class="old-price">$180</span>
+</div>
+<div class="buttons">
+<a href="#" onclick="buyNow(42); return false;" class="btn btn-success btn-sm">Buy Now</a>
+<a href="{{ url_for('party') }}" class="btn btn-warning btn-sm">Offers</a>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Pencil Banner  -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-11">
+
+            <div class="pencil-offer">
+
+                <div class="eraser"></div>
+                <div class="metal"></div>
+
+                <div class="offer-content">
+                    <h2>WOW WORTHY DEALS</h2>
+                    <p>PRICES THAT PACK A PUNCH</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Mens Collection -->
+
+<div class="container py-5">
+
+
+
+<h2 class="section-title">
+    MEN COLLECTION
+</h2>
+
+
+<div id="mensSlider"
+class="carousel slide"
+data-bs-ride="carousel"
+data-bs-interval="5000"
+data-bs-pause="false">
+
+
+
+<div class="carousel-inner">
+
+
+
+<!-- SLIDE 1 -->
+
+<div class="carousel-item active">
+
+
+<div class="product-row">
+
+<img src="{{ url_for('static', filename='photo.jpg') }}">
+
+<div class="product-item">
+
+<div class="card product-card">
+
+
+
+<div class="card-body text-center">
+
+<h5>Casual Shirt</h5>
+
+<p class="price">
+₹999
+</p>
+
+<a href="#" data-product-id="24" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="product-item">
+
+<div class="card product-card">
+
+<img src="{{ url_for('static', filename='images/denimshirt.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+
+<h5>Denim Jacket</h5>
+
+<p class="price">
+₹1499
+</p>
+
+<a href="#" data-product-id="25" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="product-item">
+
+<div class="card product-card">
+
+<img src="{{ url_for('static', filename='images/polot-shirt.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+
+<h5>Polo T-Shirt</h5>
+
+<p class="price">
+₹799
+</p>
+
+<a href="#" data-product-id="58" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="product-item">
+
+<div class="card product-card">
+
+<img src="{{ url_for('static', filename='/images/formalpant.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+
+<h5>Formal Pant</h5>
+
+<p class="price">
+₹1199
+</p>
+
+<a href="#" data-product-id="59" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="product-item">
+
+<div class="card product-card">
+
+<img src="{{ url_for('static', filename='/images/sneaker.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+
+<h5>Sneakers</h5>
+
+<p class="price">
+₹2299
+</p>
+
+<a href="#" data-product-id="60" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- SLIDE 2 -->
+
+
+<div class="carousel-item">
+
+
+<div class="product-row">
+
+
+
+<div class="product-item">
+<div class="card product-card">
+<img src="{{ url_for('static', filename='/images/hoodies.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+<h5>Hoodie</h5>
+<p class="price">₹1599</p>
+
+<a href="#" data-product-id="61" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+</div>
+</div>
+
+
+
+
+<div class="product-item">
+<div class="card product-card">
+<img src="{{ url_for('static', filename='/images/trackpaint.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+<h5>Track Pant</h5>
+<p class="price">₹999</p>
+
+<a href="#" data-product-id="62" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="product-item">
+<div class="card product-card">
+<img src="{{ url_for('static', filename='/images/watch.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+<h5>Watch</h5>
+<p class="price">₹2499</p>
+
+<a href="#" data-product-id="63" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="product-item">
+<div class="card product-card">
+<img src="{{ url_for('static', filename='/images/leatherbelt.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+<h5>Leather Belt</h5>
+<p class="price">₹699</p>
+
+<a href="#" data-product-id="64" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="product-item">
+<div class="card product-card">
+<img src="{{ url_for('static', filename='/images/sportshoes.jpg') }}" alt="Photo">
+
+<div class="card-body text-center">
+<h5>Sports Shoes</h5>
+<p class="price">₹2799</p>
+
+<a href="#" data-product-id="45" onclick="buyNow(this); return false;" class="btn btn-buy w-100">
+BUY NOW
+</a>
+
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- Controls -->
+
+<button class="carousel-control-prev"
+type="button"
+data-bs-target="#mensSlider"
+data-bs-slide="prev">
+
+<span class="carousel-control-prev-icon"></span>
+
+</button>
+
+
+
+<button class="carousel-control-next"
+type="button"
+data-bs-target="#mensSlider"
+data-bs-slide="next">
+
+<span class="carousel-control-next-icon"></span>
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+new bootstrap.Carousel(
+document.querySelector('#mensSlider'),
+{
+interval:5000,
+ride:'carousel',
+pause:false,
+wrap:true
+}
+);
+
+</script>
+<!-- Gallery section for all shop by category -->
+ 
+
+<div class="container py-5">
+
+
+<h1 class="category-title">
+SHOP BY CATEGORY
+</h1>
+
+
+
+<div class="category-row">
+
+
+
+<!-- Men's Wear -->
+
+<div class="category-item">
+
+ <a href="{{url_for('mens_collection')}}"class="category-link">
+
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='./images/mens.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Men's Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+<!-- Men's Ethnic -->
+
+<div class="category-item">
+
+ <a href="{{url_for('men_ethenic_wear')}}"class="category-link">
+
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='./images/menethenic.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Men's Ethnic Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Women's Wear -->
+
+<div class="category-item">
+
+ <a href="{{url_for('womens_collection')}}"class="category-link">
+
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='./images/womens.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Women's Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Women's Ethnic -->
+
+<div class="category-item">
+
+ <a href="{{url_for('women_ethenic_wear')}}"class="category-link">
+
+
+<div class="category-card">
+<img src="{{ url_for('static', filename='./images/womenethenic.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Women's Ethnic Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- South Wear -->
+
+<div class="category-item">
+
+ <a href="{{url_for('south_indian_wear')}}"class="category-link">
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='./images/south.jpg') }}" alt="Photo">
+
+<div class="category-name">
+South Indian Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- North Eastern -->
+
+<div class="category-item">
+
+
+ <a href="{{url_for('north_eastern_wear')}}"class="category-link">
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='./images/northeastern.jpg') }}" alt="Photo">
+
+<div class="category-name">
+North Eastern Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- North Indian -->
+
+<div class="category-item">
+
+ <a href="{{url_for('north_indian_wear')}}"class="category-link">
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='./images/north.jpg') }}" alt="Photo">
+
+<div class="category-name">
+North Indian Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Western -->
+
+<div class="category-item">
+
+   <a href="{{url_for('western_dress')}}"class="category-link">
+
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='./images/westren.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Western Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Party Wear -->
+
+<div class="category-item">
+
+   <a href="{{url_for('party')}}"class="category-link">
+
+<div class="category-card">
+<img src="{{ url_for('static', filename='./images/party.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Party Wear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Kids -->
+
+<div class="category-item">
+   <a href="{{url_for('kids_fashion')}}"class="category-link">
+
+<div class="category-card">
+<img src="{{ url_for('static', filename='./images/kids.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Kids Fashion
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Men Innerwear -->
+
+<div class="category-item">
+
+<a href="{{ url_for('mens_collection') }}" class="category-link">
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='/images/mensinner.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Men Innerwear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Women Innerwear -->
+
+<div class="category-item">
+
+<a href="{{ url_for('womens_collection') }}" class="category-link">
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='/images/womensinner.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Women Innerwear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Accessories -->
+
+<div class="category-item">
+   <a href="{{url_for('accessories')}}"class="category-link">
+
+<div class="category-card">
+<img src="{{ url_for('static', filename='/images/accessories.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Accessories
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Bags -->
+
+<div class="category-item">
+
+   <a href="{{url_for('bags_and_wallets')}}"class="category-link">
+
+<div class="category-card">
+
+<img src="{{ url_for('static', filename='/images/bagsandbags.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Bags & Wallets
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+
+<!-- Footwear -->
+
+<div class="category-item">
+   <a href="{{url_for('footwear')}}"class="category-link">
+<div class="category-card">
+<img src="{{ url_for('static', filename='/images/footwear.jpg') }}" alt="Photo">
+
+<div class="category-name">
+Footwear
+</div>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+<!-- Footer section -->
+ 
+
+<footer class="footer">
+
+
+<div class="container">
+
+
+<div class="row gy-4">
+
+
+
+<!-- Online Shopping -->
+
+<div class="col-lg-3 col-md-6">
+
+<h5>
+Online Shopping
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('mens_collection') }}">Men</a></li>
+
+<li><a href="{{ url_for('womens_collection') }}">Women</a></li>
+
+<li><a href="{{ url_for('kids_fashion') }}">Kids</a></li>
+
+<li><a href="{{ url_for('women_ethenic_wear') }}">Ethnic Wear</a></li>
+
+<li><a href="{{ url_for('western_dress') }}">Western Wear</a></li>
+
+<li><a href="{{ url_for('footwear') }}">Footwear</a></li>
+
+<li><a href="{{ url_for('accessories') }}">Accessories</a></li>
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<!-- Customer Policies -->
+
+<div class="col-lg-3 col-md-6">
+
+
+<h5>
+Customer Policies
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+
+<li><a href="{{ url_for('home') }}">FAQ</a></li>
+
+<li><a href="{{ url_for('home') }}">Shipping Policy</a></li>
+
+<li><a href="{{ url_for('home') }}">Return & Exchange</a></li>
+
+<li><a href="{{ url_for('home') }}">Privacy Policy</a></li>
+
+<li><a href="{{ url_for('home') }}">Terms & Conditions</a></li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- Search -->
+
+<div class="col-lg-3 col-md-6">
+
+
+<h5>
+Search Products, Brands & More
+</h5>
+
+
+<div class="footer-search">
+
+<input type="text" placeholder="Search products & brands">
+
+</div>
+
+
+
+
+<h5 class="mt-4">
+Popular Searches
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('south_indian_wear') }}">Saree</a></li>
+
+<li><a href="{{ url_for('women_ethenic_wear') }}">Kurta Pajama</a></li>
+
+<li><a href="{{ url_for('party') }}">Lehenga</a></li>
+
+<li><a href="{{ url_for('mens_collection') }}">T-Shirts</a></li>
+
+<li><a href="{{ url_for('mens_collection') }}">Jeans</a></li>
+
+<li><a href="{{ url_for('footwear') }}">Shoes</a></li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- Useful Links -->
+
+<div class="col-lg-3 col-md-6">
+
+
+<h5>
+Useful Links
+</h5>
+
+
+<ul>
+
+<li><a href="{{ url_for('home') }}">About Us</a></li>
+
+<li><a href="{{ url_for('home') }}">Careers</a></li>
+
+<li><a href="{{ url_for('home') }}">Store Locator</a></li>
+
+<li><a href="{{ url_for('party') }}">Offers</a></li>
+
+<li><a href="{{ url_for('home') }}">Blog</a></li>
+
+<li><a href="{{ url_for('home') }}">Help Center</a></li>
+
+
+</ul>
+
+
+
+<h5 class="mt-4">
+Contact Us
+</h5>
+
+
+<div class="contact-info">
+
+
+<p>
+📞 
+<a href="tel:94875xxxx">
+94875xxxx
+</a>
+</p>
+
+
+
+<p>
+📍
+<a href="https://maps.google.com/?q=Lucknow+Near+CMS+School" target="_blank">
+Lucknow, Near CMS School
+</a>
+</p>
+
+
+
+<p>
+✉
+<a href="mailto:support@example.com">
+support@example.com
+</a>
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="footer-bottom">
+
+© 2026 Fashion Store | All Rights Reserved
+
+</div>
+
+
+
+</div>
+
+
+</footer>
+
+
+
+
+<script>
+async function buyNow(arg) {
+    let productId = null;
+
+    if (typeof arg === 'number') {
+        productId = arg;
+    } else if (arg && arg.dataset) {
+        const productIdData = arg.dataset.productId;
+        if (productIdData) {
+            productId = Number(productIdData);
+        }
+    }
+
+    if (!productId) {
+        alert('Unable to identify the product for Buy Now');
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/party/cart', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({product_id: productId, quantity: 1})
+        });
+        const data = await response.json();
+        if (response.status === 401) {
+            window.location.href = data.login_url || '/login?next=' + encodeURIComponent(location.pathname);
+            return;
+        }
+        if (!response.ok) throw new Error(data.error || 'Could not add product to cart');
+        window.location.href = '/cart';
+    } catch (err) {
+        alert(err.message);
+    }
+}
+</script>
+</body>
+</html>

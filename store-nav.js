@@ -1,0 +1,1 @@
+document.querySelectorAll('.shop-nav').forEach(function(nav){var button=nav.querySelector('.shop-nav__toggle');if(!button)return;button.addEventListener('click',function(){var open=nav.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));});});

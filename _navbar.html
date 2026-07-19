@@ -1,0 +1,14 @@
+<!-- File-purpose comment: Template file _navbar.html. Used by Flask to render this page. -->
+<header class="shop-nav" data-nav-ready="true">
+  <div class="shop-nav__top">
+    <a class="shop-nav__brand" href="/">ShopZone</a>
+    <button class="shop-nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="shop-nav__actions">
+      <a href="/cart">🛒 Cart</a>
+      {% if logged_in %}<span class="shop-nav__hello">Hi, {{ user_name }}</span><a href="/logout">Logout</a>{% else %}<a href="/login?next={{ request.path }}">Login</a><a class="shop-nav__signup" href="/signup?next={{ request.path }}">Sign up</a>{% endif %}
+    </nav>
+  </div>
+  <nav class= "shop-nav__links" aria-label="Product categories">
+    <a href="/">Home</a><a href="/party">Party Wear</a><a href="/womens_collection">Women's Collection</a><a href="/north_indian_collection">North Indian</a><a href="/south_indian_wear">South Indian</a><a href="/women_ethenic_wear">Women's Ethnic</a><a href="/north_eastern_wear">North Eastern</a><a href="/mens_collection">Men's Collection</a><a href="/accessories">Accessories</a><a href="/Bags_and_wallets">Bags & Wallets</a><a href="/footwear">Footwear</a><a href="/kids_fashion">Kids Fashion</a><a href="/gaming_mouse">Gaming</a>
+  </nav>
+</header>
